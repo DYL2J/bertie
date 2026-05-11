@@ -287,6 +287,17 @@ h3 {
   aspect-ratio: 16 / 9;
 }
 
+.post-card--text {
+  min-height: clamp(280px, 42vw, 520px);
+  background:
+    linear-gradient(135deg, rgb(111 73 184 / 0.16), transparent 56%),
+    var(--paper);
+}
+
+.post-card--text a {
+  align-self: end;
+}
+
 .post-card--tall {
   grid-column: span 4;
 }
@@ -406,6 +417,15 @@ h3 {
 .article-hero--portrait img {
   aspect-ratio: 3 / 4;
   object-position: center top;
+}
+
+.article-hero--text {
+  display: block;
+  max-width: 900px;
+}
+
+.article-hero--text h1 {
+  max-width: 860px;
 }
 
 figcaption {
