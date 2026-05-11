@@ -42,7 +42,7 @@ a {
 
 .site-header {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto;
   gap: 1rem;
   align-items: center;
   width: min(var(--max), calc(100% - 2rem));
@@ -67,14 +67,6 @@ nav {
   justify-content: flex-end;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.92rem;
-}
-
-.site-note {
-  color: var(--muted);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.76rem;
-  font-weight: 800;
-  text-transform: uppercase;
 }
 
 nav a,
@@ -157,41 +149,49 @@ h3 {
 
 .post-index {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: clamp(1rem, 4vw, 4rem);
-  padding: clamp(2rem, 6vw, 4.5rem) 0;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.15rem, 3vw, 2rem) 0 clamp(2.5rem, 6vw, 4.5rem);
 }
 
-.section-heading h2 {
+.section-heading h1 {
+  position: sticky;
+  top: 1rem;
   margin-bottom: 0;
-  font-size: clamp(2.2rem, 6vw, 5rem);
-  line-height: 0.92;
+  font-size: clamp(1.45rem, 3vw, 2.35rem);
+  line-height: 0.98;
 }
 
-.post-grid {
+.news-grid {
   display: grid;
-  gap: 1.4rem;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+  border-top: 3px solid var(--ink);
+  border-left: 1px solid var(--line);
 }
 
 .post-card {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(160px, 0.55fr);
-  gap: clamp(1rem, 3vw, 2rem);
-  align-items: stretch;
-  padding: clamp(1rem, 2.4vw, 1.4rem);
+  grid-template-rows: auto 1fr;
+  gap: 0.8rem;
+  align-items: start;
+  min-height: 100%;
+  padding: clamp(0.85rem, 2vw, 1.2rem);
   background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 6px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
 }
 
 .post-card a {
+  display: block;
   text-decoration: none;
 }
 
 .post-card h3 {
-  margin: 0.35rem 0 0.55rem;
-  font-size: clamp(1.7rem, 4vw, 3rem);
-  line-height: 1;
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.45rem, 3vw, 2.6rem);
+  line-height: 0.98;
 }
 
 .post-card p {
@@ -203,11 +203,39 @@ h3 {
 
 .post-card img {
   width: 100%;
-  height: 100%;
-  min-height: 190px;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid var(--line);
+  border-radius: 0;
+  border: 0;
+}
+
+.post-card--lead {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.post-card--lead h3 {
+  font-size: clamp(2.4rem, 5.8vw, 5.4rem);
+  line-height: 0.9;
+}
+
+.post-card--lead p {
+  max-width: 760px;
+  font-size: clamp(1.08rem, 1.8vw, 1.28rem);
+}
+
+.post-card--lead img {
+  aspect-ratio: 16 / 9;
+}
+
+.post-card--tall {
+  grid-column: span 2;
+}
+
+.post-card--tall img {
+  aspect-ratio: 3 / 4;
 }
 
 .page {
@@ -324,6 +352,12 @@ figcaption {
   grid-template-columns: minmax(120px, 0.42fr) minmax(0, 700px) minmax(120px, 0.42fr);
   gap: clamp(1rem, 3vw, 2.5rem);
   padding: clamp(2rem, 5vw, 3.5rem) 0;
+}
+
+.article-layout--plain {
+  display: block;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .article-aside {
@@ -473,16 +507,17 @@ footer p {
   .article-body {
     grid-column: auto;
   }
+
+  .section-heading h1 {
+    position: static;
+    margin-bottom: 0.8rem;
+  }
 }
 
 @media (max-width: 680px) {
   .site-header,
   .image-pair {
     display: block;
-  }
-
-  .site-note {
-    margin-bottom: 0.25rem;
   }
 
   nav {
@@ -494,11 +529,16 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  .post-card {
-    display: grid;
+  .news-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    overflow: hidden;
+    border-left: 0;
+  }
+
+  .post-card,
+  .post-card--lead,
+  .post-card--tall {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .post-card img,
