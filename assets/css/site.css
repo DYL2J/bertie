@@ -300,7 +300,7 @@ h3 {
 }
 
 .post-card--text {
-  min-height: clamp(320px, 48vw, 560px);
+  min-height: clamp(230px, 30vw, 360px);
   background:
     linear-gradient(135deg, rgb(111 73 184 / 0.16), transparent 56%),
     var(--paper);
@@ -510,13 +510,13 @@ figcaption {
 }
 
 .pullquote {
-  margin: 2.25rem 0;
-  padding: 1rem 0;
-  border-top: 3px solid var(--ink);
+  margin: 2rem 0;
+  padding: 0.85rem 0 0.95rem;
+  border-top: 2px solid var(--ink);
   border-bottom: 1px solid var(--line);
   color: var(--ink);
-  font-size: clamp(2rem, 5vw, 4.3rem);
-  line-height: 0.95;
+  font-size: clamp(1.45rem, 2.8vw, 2.35rem);
+  line-height: 1.08;
 }
 
 .media-block {
