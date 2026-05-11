@@ -13,20 +13,56 @@
   setHeaderState();
   window.addEventListener("scroll", setHeaderState, { passive: true });
 
-  const article = document.querySelector("article");
+  const backToTop = document.createElement("button");
+  backToTop.className = "back-to-top";
+  backToTop.type = "button";
+  backToTop.textContent = "Back to top";
+  backToTop.setAttribute("aria-label", "Back to top");
+  document.body.append(backToTop);
+
+  const setBackToTopState = () => {
+    backToTop.classList.toggle("is-visible", window.scrollY > 520);
+  };
+
+  setBackToTopState();
+  window.addEventListener("scroll", setBackToTopState, { passive: true });
+
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+  });
+
+  const article = document.querySelector(".article-shell > article");
 
   if (article) {
     const progress = document.createElement("div");
+    const progressBar = document.createElement("span");
     progress.className = "reading-progress";
     progress.setAttribute("aria-hidden", "true");
+    progress.append(progressBar);
     document.body.append(progress);
 
+    const articleText = Array.from(article.querySelectorAll(".article-body"))
+      .map((section) => section.textContent.trim())
+      .join(" ");
+    const words = articleText.split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.round(words / 225));
+    const meta = article.querySelector(".article-meta");
+
+    if (meta && words) {
+      const readingTime = document.createElement("span");
+      readingTime.className = "reading-time";
+      readingTime.textContent = `${minutes} min read`;
+      meta.append(readingTime);
+    }
+
     const updateProgress = () => {
+      const headerBottom = header ? header.getBoundingClientRect().bottom : 0;
       const start = article.offsetTop;
       const end = start + article.offsetHeight - window.innerHeight;
       const distance = Math.max(end - start, 1);
       const amount = Math.min(Math.max((window.scrollY - start) / distance, 0), 1);
-      progress.style.transform = `scaleX(${amount})`;
+      progress.style.top = `${Math.max(headerBottom, 0)}px`;
+      progressBar.style.transform = `scaleX(${amount})`;
     };
 
     updateProgress();
@@ -47,7 +83,7 @@
           observer.unobserve(entry.target);
         });
       },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.08 }
+      { rootMargin: "0px 0px 12% 0px", threshold: 0.02 }
     );
 
     revealItems.forEach((item) => {
