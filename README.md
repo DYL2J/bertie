@@ -1,21 +1,59 @@
-# Dylan's Notes
+# Bertie
 
-A simple personal blog designed for GitHub Pages.
+Bertie is a simple GitHub Pages site for a personal journal.
 
-## Edit the site
+It uses plain HTML and CSS, so there is no build step. Push to GitHub and GitHub Pages serves the files directly.
 
-- Update `index.html` to change the homepage and add links to new posts.
-- Update `about.html` with your own introduction.
-- Copy `posts/first-post.html` when you want to create another post.
-- Keep images in this folder and reference them with normal relative paths.
+## Structure
 
-## Publish with GitHub Pages
+```text
+.
+├── assets/
+│   └── css/
+│       └── site.css
+├── posts/
+│   ├── _templates/
+│   │   └── article.html
+│   └── what-ive-learned-at-university.html
+├── uni_images/
+├── index.html
+├── about.html
+├── CNAME
+└── .nojekyll
+```
 
-1. Create a new GitHub repository.
-2. Push these files to the repository's `main` branch.
-3. In GitHub, open the repository settings.
-4. Go to **Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select the `main` branch and `/ (root)`, then save.
+## Add a new post
 
-GitHub will show the public URL once the first deployment finishes.
+1. Copy `posts/_templates/article.html`.
+2. Rename the copy inside `posts/`, for example `posts/my-new-essay.html`.
+3. Edit the title, date, description, article text, and image paths.
+4. Add a new `.post-card` entry to `index.html`.
+5. Commit and push.
+
+## Images
+
+Put article-specific images in a folder named for the article, such as:
+
+```text
+posts/my-new-essay-images/
+```
+
+or keep using a clear top-level folder such as:
+
+```text
+uni_images/
+```
+
+Use JPG, PNG, or WebP for browser reliability. HEIC files may not display consistently on GitHub Pages.
+
+## Publish
+
+This repo includes a `CNAME` file for:
+
+```text
+bertie.com
+```
+
+In GitHub, go to **Settings** → **Pages** and make sure the custom domain is `bertie.com`.
+
+At your DNS provider, point `bertie.com` to GitHub Pages and point `www` to `dyl2j.github.io`.

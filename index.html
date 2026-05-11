@@ -3,51 +3,59 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dylan's Notes</title>
-    <meta name="description" content="A personal blog about books, ideas, and whatever keeps returning to mind.">
-    <link rel="stylesheet" href="styles.css">
+    <title>Bertie</title>
+    <meta name="description" content="Bertie is a personal journal of essays, notes, books, cities, university, and whatever is worth writing down.">
+    <link rel="stylesheet" href="assets/css/site.css">
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="index.html">Dylan's Notes</a>
+      <a class="brand" href="index.html">Bertie</a>
       <nav aria-label="Main navigation">
-        <a href="index.html">Home</a>
+        <a href="index.html">Latest</a>
         <a href="about.html">About</a>
       </nav>
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">Reading, thinking, noticing</p>
-          <h1 id="hero-title">A small place for essays, fragments, and unfinished thoughts.</h1>
+      <section class="home-hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">A personal journal</p>
+          <h1 id="hero-title">Bertie</h1>
           <p>
-            This is a personal blog for collecting what I am reading, learning, and trying to make sense of.
+            Essays, fragments, lists, city notes, book thoughts, and anything else that refuses to stay unwritten.
           </p>
         </div>
         <img src="books.jpeg" alt="A row of books on a shelf">
       </section>
 
-      <section class="post-list" aria-labelledby="latest-posts">
+      <div class="issue-strip" aria-label="Publication note">
+        <span>Independent writing by Dylan</span>
+        <span>Notes, essays, observations</span>
+      </div>
+
+      <section class="post-index" aria-labelledby="latest-posts">
         <div class="section-heading">
           <p class="eyebrow">Latest</p>
           <h2 id="latest-posts">Posts</h2>
         </div>
 
-        <article class="post-preview">
-          <a href="posts/first-post.html">
-            <time datetime="2026-05-11">May 11, 2026</time>
-            <h3>First Post</h3>
-            <p>
-              A starter entry you can replace with your own writing once the site is live.
-            </p>
-          </a>
-        </article>
+        <div class="post-grid">
+          <article class="post-card">
+            <a href="posts/what-ive-learned-at-university.html">
+              <time datetime="2026-05-11">May 11, 2026</time>
+              <h3>My final hand in is in 3 weeks. Here's what I've learned in the past 3 years.</h3>
+              <p>
+                University is not the lectures. It is the conversations, the city, the societies, the work, and the things you choose to go after.
+              </p>
+            </a>
+            <img src="uni_images/3039f4b2-65f4-489a-9fba-cb15d09dd3c7.jpg" alt="Students talking at a university event">
+          </article>
+        </div>
       </section>
     </main>
 
     <footer>
-      <p>Built with plain HTML and hosted on GitHub Pages.</p>
+      <p>Bertie. Built with plain HTML and hosted on GitHub Pages.</p>
     </footer>
   </body>
 </html>
