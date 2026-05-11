@@ -18,7 +18,6 @@ It uses plain HTML and CSS, so there is no build step. Push to GitHub and GitHub
 ├── uni_images/
 ├── index.html
 ├── about.html
-├── CNAME
 └── .nojekyll
 ```
 
@@ -48,12 +47,10 @@ Use JPG, PNG, or WebP for browser reliability. HEIC files may not display consis
 
 ## Publish
 
-This repo includes a `CNAME` file for:
+This site uses the default GitHub Pages URL:
 
 ```text
-bertie.com
+https://dyl2j.github.io/bertie/
 ```
 
-In GitHub, go to **Settings** → **Pages** and make sure the custom domain is `bertie.com`.
-
-At your DNS provider, point `bertie.com` to GitHub Pages and point `www` to `dyl2j.github.io`.
+In GitHub, go to **Settings** → **Pages** and make sure there is no custom domain set.
