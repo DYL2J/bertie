@@ -226,23 +226,23 @@ h3 {
 }
 
 .article-shell {
-  width: min(1380px, calc(100% - 2rem));
+  width: min(1240px, calc(100% - 2rem));
 }
 
 .article-hero {
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
-  gap: clamp(1.5rem, 4vw, 4.5rem);
-  align-items: end;
-  padding: clamp(2rem, 5vw, 4rem) 0;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(1.8rem, 4vw, 3.5rem);
   border-bottom: 1px solid var(--ink);
 }
 
 .article-hero h1 {
-  max-width: 840px;
+  max-width: 760px;
   margin-bottom: 1rem;
-  font-size: clamp(3rem, 8vw, 8.2rem);
-  line-height: 0.86;
+  font-size: clamp(3rem, 6.7vw, 6.8rem);
+  line-height: 0.88;
 }
 
 .dek {
@@ -270,8 +270,26 @@ h3 {
 .article-hero img {
   width: 100%;
   aspect-ratio: 4 / 5;
+  max-height: 720px;
   object-fit: cover;
   border-radius: 6px;
+}
+
+.article-hero--wide {
+  grid-template-columns: minmax(0, 0.85fr) minmax(360px, 1fr);
+}
+
+.article-hero--wide img {
+  aspect-ratio: 5 / 4;
+}
+
+.article-hero--portrait {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 430px);
+}
+
+.article-hero--portrait img {
+  aspect-ratio: 3 / 4;
+  object-position: center top;
 }
 
 figcaption {
@@ -284,9 +302,9 @@ figcaption {
 
 .article-layout {
   display: grid;
-  grid-template-columns: minmax(160px, 0.34fr) minmax(0, 720px) minmax(180px, 0.45fr);
-  gap: clamp(1rem, 3vw, 3.2rem);
-  padding: clamp(2rem, 5vw, 4rem) 0;
+  grid-template-columns: minmax(120px, 0.42fr) minmax(0, 700px) minmax(120px, 0.42fr);
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(2rem, 5vw, 3.5rem) 0;
 }
 
 .article-aside {
@@ -300,6 +318,7 @@ figcaption {
 }
 
 .article-body {
+  grid-column: 2;
   font-size: clamp(1.12rem, 1.6vw, 1.26rem);
 }
 
@@ -342,12 +361,12 @@ figcaption {
 
 .media-block {
   grid-column: 1 / -1;
-  margin: clamp(1rem, 4vw, 3rem) 0;
+  margin: clamp(1rem, 4vw, 2.5rem) 0;
 }
 
 .media-block img {
   width: 100%;
-  max-height: 760px;
+  max-height: 640px;
   object-fit: cover;
   border-radius: 6px;
 }
@@ -357,13 +376,14 @@ figcaption {
   grid-column: 1 / -1;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 1rem;
-  margin: clamp(1rem, 4vw, 3rem) 0;
+  margin: clamp(1rem, 4vw, 2.5rem) 0;
 }
 
 .image-pair img {
   width: 100%;
   height: 100%;
-  min-height: 360px;
+  min-height: 320px;
+  max-height: 620px;
   object-fit: cover;
   border-radius: 6px;
 }
@@ -407,6 +427,10 @@ footer p {
     margin-bottom: 1.4rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--line);
+  }
+
+  .article-body {
+    grid-column: auto;
   }
 }
 
