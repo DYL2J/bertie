@@ -227,8 +227,14 @@
     document.querySelectorAll(".video-card__media video, .post-card__media video").forEach((video) => {
       const card = video.closest(".video-card, .post-card");
 
-      card?.addEventListener("pointerenter", () => video.play().catch(() => {}));
+      card?.addEventListener("pointerenter", () => {
+        video.play()
+          .then(() => card.classList.add("is-previewing"))
+          .catch(() => {});
+      });
+
       card?.addEventListener("pointerleave", () => {
+        card.classList.remove("is-previewing");
         video.pause();
         video.currentTime = 0;
       });
