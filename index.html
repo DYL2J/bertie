@@ -14,19 +14,26 @@
     <main id="main">
       <section class="post-index" aria-label="Posts">
         <div class="news-grid">
-          <article class="post-card post-card--lead post-card--showcase">
+          <article class="post-card post-card--lead post-card--showcase post-card--video">
             <a href="posts/my-testimony.html">
+              <div class="post-card__media" aria-hidden="true">
+                <video muted loop playsinline preload="metadata">
+                  <source src="assets/videos/testimony.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="post-card__body">
               <span class="post-label">Video</span>
               <h3>An interview with Central Church</h3>
               <p>
                 Life, Faith and Meaning.
               </p>
+              </div>
             </a>
           </article>
 
           <article class="post-card post-card--text">
             <a href="posts/do-you-have-the-greggs-app.html">
-              <span class="post-label">Product note</span>
+              <span class="post-label">Story</span>
               <h3>Do you have the Greggs app?</h3>
               <p>
                 A sausage roll, a drive through window, and the tiny frictions we accept in exchange for rewards.
@@ -36,7 +43,7 @@
 
           <article class="post-card post-card--tall">
             <a href="posts/i-am-so-glad-i-sucked-at-sales.html">
-              <span class="post-label">Essay</span>
+              <span class="post-label">Story</span>
               <h3>I am so glad I sucked at sales.</h3>
               <p>
                 A gap year, a telemarketing job, and the long way round to university.

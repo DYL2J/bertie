@@ -23,6 +23,7 @@ Bertie is a static writing site served by GitHub Pages. There is no build step: 
 |   |-- i-am-so-glad-i-sucked-at-sales.html
 |   `-- my-testimony.html
 |-- index.html
+|-- stories.html
 |-- videos.html
 |-- about.html
 `-- .nojekyll
@@ -33,7 +34,8 @@ Bertie is a static writing site served by GitHub Pages. There is no build step: 
 1. Copy `posts/_templates/article.html`.
 2. Rename the copy inside `posts/`, for example `posts/my-new-post.html`.
 3. Edit the title, date, description, article text, and any media.
-4. Add a matching `.post-card` entry to `index.html`.
+4. Add text posts to `stories.html`.
+5. Add a matching `.post-card` entry to `index.html` only if it should be featured on the homepage.
 
 Shared header and footer markup lives in `assets/partials/` and is loaded by `assets/js/site.js`.
 

@@ -183,7 +183,7 @@
   }
 
   const revealItems = document.querySelectorAll(
-    ".post-card, .video-index__header, .video-card, .article-hero, .article-body, .media-block, .image-pair, .about-grid, .showcase-copy, .embed-showcase, .article-footer, .site-footer"
+    ".post-card, .video-index__header, .story-index__header, .video-card, .story-card, .article-hero, .article-body, .media-block, .image-pair, .about-grid, .about-hero, .about-story, .showcase-copy, .embed-showcase, .article-footer, .site-footer"
   );
 
   if (revealItems.length && !reducedMotion && "IntersectionObserver" in window) {
@@ -207,7 +207,7 @@
   }
 
   if (!reducedMotion && window.matchMedia("(pointer: fine)").matches) {
-    document.querySelectorAll(".post-card, .video-card").forEach((card) => {
+    document.querySelectorAll(".post-card, .video-card, .story-card").forEach((card) => {
       card.addEventListener("pointermove", (event) => {
         const rect = card.getBoundingClientRect();
         const x = ((event.clientX - rect.left) / rect.width) * 100;
@@ -224,8 +224,8 @@
       });
     });
 
-    document.querySelectorAll(".video-card__media video").forEach((video) => {
-      const card = video.closest(".video-card");
+    document.querySelectorAll(".video-card__media video, .post-card__media video").forEach((video) => {
+      const card = video.closest(".video-card, .post-card");
 
       card?.addEventListener("pointerenter", () => video.play().catch(() => {}));
       card?.addEventListener("pointerleave", () => {

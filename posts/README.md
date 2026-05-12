@@ -20,7 +20,7 @@ Posts can vary their layout by mixing these blocks:
 
 This keeps the site consistent without forcing every article to have the same shape.
 
-Keep shared images in `../assets/images/`.
+Keep shared images in `../assets/images/`. Add text posts to `../stories.html`.
 
 The shared header and footer are loaded from `../assets/partials/` by `../assets/js/site.js`.
 
