@@ -13,6 +13,7 @@ Bertie is a static writing site served by GitHub Pages. There is no build step: 
 |   |-- partials/
 |   |   |-- footer.html
 |   |   `-- header.html
+|   |-- videos/
 |   `-- js/
 |       `-- site.js
 |-- posts/
@@ -22,6 +23,7 @@ Bertie is a static writing site served by GitHub Pages. There is no build step: 
 |   |-- i-am-so-glad-i-sucked-at-sales.html
 |   `-- my-testimony.html
 |-- index.html
+|-- videos.html
 |-- about.html
 `-- .nojekyll
 ```
@@ -34,6 +36,14 @@ Bertie is a static writing site served by GitHub Pages. There is no build step: 
 4. Add a matching `.post-card` entry to `index.html`.
 
 Shared header and footer markup lives in `assets/partials/` and is loaded by `assets/js/site.js`.
+
+## Add A Video
+
+1. Create a post page in `posts/`.
+2. Add the video entry to `videos.html`.
+3. Add it to `index.html` only if it should be featured on the homepage.
+
+For reliable in-page playback, put MP4 files under 100 MB in `assets/videos/` and use a native `<video controls>` element. MOV files are ignored because they are often too large for GitHub Pages and less reliable in browsers.
 
 ## Images
 

@@ -152,7 +152,7 @@
       const updateCounter = async () => {
         try {
           const shouldIncrement = sessionStorage.getItem(hasCountedKey) !== "true";
-          const endpoint = shouldIncrement ? `${endpointBase}/up` : endpointBase;
+          const endpoint = shouldIncrement ? `${endpointBase}/up` : `${endpointBase}/`;
           const response = await fetch(endpoint, { cache: "no-store" });
 
           if (!response.ok) throw new Error("Counter request failed");
@@ -183,7 +183,7 @@
   }
 
   const revealItems = document.querySelectorAll(
-    ".post-card, .article-hero, .article-body, .media-block, .image-pair, .about-grid, .showcase-copy, .embed-showcase, .article-footer, .site-footer"
+    ".post-card, .video-index__header, .video-card, .article-hero, .article-body, .media-block, .image-pair, .about-grid, .showcase-copy, .embed-showcase, .article-footer, .site-footer"
   );
 
   if (revealItems.length && !reducedMotion && "IntersectionObserver" in window) {

@@ -23,3 +23,5 @@ This keeps the site consistent without forcing every article to have the same sh
 Keep shared images in `../assets/images/`.
 
 The shared header and footer are loaded from `../assets/partials/` by `../assets/js/site.js`.
+
+Video posts can use `.showcase-layout` with `.embed-showcase`. Add video entries to `../videos.html` so videos have a dedicated browsing page.
