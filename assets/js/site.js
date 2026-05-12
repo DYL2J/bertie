@@ -207,7 +207,7 @@
   }
 
   if (!reducedMotion && window.matchMedia("(pointer: fine)").matches) {
-    document.querySelectorAll(".post-card").forEach((card) => {
+    document.querySelectorAll(".post-card, .video-card").forEach((card) => {
       card.addEventListener("pointermove", (event) => {
         const rect = card.getBoundingClientRect();
         const x = ((event.clientX - rect.left) / rect.width) * 100;
@@ -221,6 +221,16 @@
         card.style.removeProperty("--mx");
         card.style.removeProperty("--my");
         card.classList.remove("is-active");
+      });
+    });
+
+    document.querySelectorAll(".video-card__media video").forEach((video) => {
+      const card = video.closest(".video-card");
+
+      card?.addEventListener("pointerenter", () => video.play().catch(() => {}));
+      card?.addEventListener("pointerleave", () => {
+        video.pause();
+        video.currentTime = 0;
       });
     });
   }
