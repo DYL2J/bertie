@@ -284,6 +284,22 @@ h3 {
   object-fit: cover;
 }
 
+.post-card__media::after,
+.video-card__media::before {
+  content: "Play";
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 1;
+  padding: 0.35rem 0.5rem;
+  background: rgb(21 19 18 / 0.74);
+  color: #fffdf9;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .post-card h3 {
   margin: 0 0 0.55rem;
   font-size: clamp(1.45rem, 3vw, 2.6rem);
@@ -1177,6 +1193,11 @@ footer p {
   .post-card h3 {
     font-size: clamp(1.55rem, 9vw, 2.25rem);
     overflow-wrap: anywhere;
+  }
+
+  .post-card__media video,
+  .video-card__media video {
+    pointer-events: none;
   }
 
   .site-footer {
