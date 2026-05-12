@@ -8,18 +8,25 @@
     <link rel="stylesheet" href="assets/css/site.css">
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="index.html">Bertie</a>
-      <nav aria-label="Main navigation">
-        <a href="about.html">About</a>
-      </nav>
-    </header>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-include="header" data-base=""></div>
 
-    <main>
+    <main id="main">
       <section class="post-index" aria-label="Posts">
         <div class="news-grid">
-          <article class="post-card post-card--lead post-card--text">
+          <article class="post-card post-card--lead post-card--showcase">
+            <a href="posts/my-testimony.html">
+              <span class="post-label">Showcase</span>
+              <h3>An interview with Central Church</h3>
+              <p>
+                Life, Faith and Meaning.
+              </p>
+            </a>
+          </article>
+
+          <article class="post-card post-card--text">
             <a href="posts/do-you-have-the-greggs-app.html">
+              <span class="post-label">Product note</span>
               <h3>Do you have the Greggs app?</h3>
               <p>
                 A sausage roll, a drive through window, and the tiny frictions we accept in exchange for rewards.
@@ -29,34 +36,19 @@
 
           <article class="post-card post-card--tall">
             <a href="posts/i-am-so-glad-i-sucked-at-sales.html">
+              <span class="post-label">Essay</span>
               <h3>I am so glad I sucked at sales.</h3>
               <p>
                 A gap year, a telemarketing job, and the long way round to university.
               </p>
             </a>
-            <img src="lads.jpeg" alt="Three friends in suits standing in front of a car at night">
-          </article>
-
-          <article class="post-card">
-            <a href="posts/what-ive-learned-at-university.html">
-              <h3>My final hand in is in 3 weeks. Here's what I've learned in the past 3 years.</h3>
-              <p>
-                University is not the lectures. It is the conversations, the city, the societies, the work, and the things you choose to go after.
-              </p>
-            </a>
-            <img src="uni_images/3039f4b2-65f4-489a-9fba-cb15d09dd3c7.jpg" alt="Students talking at a university event">
+            <img src="assets/images/lads.jpeg" alt="Three friends in suits standing in front of a car at night" loading="lazy" decoding="async">
           </article>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <p>Bertie by Dylan Jones.</p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/dylan_jonesvpsoc/">Instagram</a>
-        <a href="https://www.linkedin.com/in/dylanfjones/">LinkedIn</a>
-      </div>
-    </footer>
+    <div data-include="footer" data-base=""></div>
     <script src="assets/js/site.js" defer></script>
   </body>
 </html>

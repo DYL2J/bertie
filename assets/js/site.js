@@ -1,9 +1,59 @@
-(() => {
+(async () => {
   const root = document.documentElement;
-  const header = document.querySelector(".site-header");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   root.classList.add("js");
+
+  const loadPartials = async () => {
+    const includes = Array.from(document.querySelectorAll("[data-include]"));
+
+    await Promise.all(
+      includes.map(async (include) => {
+        const name = include.dataset.include;
+        const base = include.dataset.base || "";
+        const response = await fetch(`${base}assets/partials/${name}.html`);
+
+        if (!response.ok) throw new Error(`Could not load ${name} partial`);
+
+        const html = await response.text();
+        include.outerHTML = html.replaceAll("{{base}}", base);
+      })
+    );
+  };
+
+  try {
+    await loadPartials();
+  } catch (error) {
+    document.querySelectorAll("[data-include]").forEach((include) => {
+      const base = include.dataset.base || "";
+      const name = include.dataset.include;
+
+      if (name === "header") {
+        include.outerHTML = `
+          <header class="site-header">
+            <a class="brand" href="${base}index.html">Bertie</a>
+            <nav aria-label="Main navigation">
+              <a href="${base}about.html">About</a>
+            </nav>
+          </header>
+        `;
+      }
+
+      if (name === "footer") {
+        include.outerHTML = `
+          <footer class="site-footer">
+            <p>Bertie by Dylan Jones.</p>
+            <div class="social-links">
+              <a href="https://www.instagram.com/dylan_jonesvpsoc/">Instagram</a>
+              <a href="https://www.linkedin.com/in/dylanfjones/">LinkedIn</a>
+            </div>
+          </footer>
+        `;
+      }
+    });
+  }
+
+  const header = document.querySelector(".site-header");
 
   const setHeaderState = () => {
     if (!header) return;
@@ -133,7 +183,7 @@
   }
 
   const revealItems = document.querySelectorAll(
-    ".post-card, .article-hero, .article-body, .media-block, .image-pair, .about-grid, .article-footer, .site-footer"
+    ".post-card, .article-hero, .article-body, .media-block, .image-pair, .about-grid, .showcase-copy, .embed-showcase, .article-footer, .site-footer"
   );
 
   if (revealItems.length && !reducedMotion && "IntersectionObserver" in window) {

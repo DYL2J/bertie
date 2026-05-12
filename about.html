@@ -8,14 +8,10 @@
     <link rel="stylesheet" href="assets/css/site.css">
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="index.html">Bertie</a>
-      <nav aria-label="Main navigation">
-        <a href="about.html">About</a>
-      </nav>
-    </header>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div data-include="header" data-base=""></div>
 
-    <main class="page">
+    <main class="page" id="main">
       <div class="about-grid">
         <div>
           <p class="eyebrow">About</p>
@@ -43,13 +39,7 @@
       </div>
     </main>
 
-    <footer class="site-footer">
-      <p>Bertie by Dylan Jones.</p>
-      <div class="social-links">
-        <a href="https://www.instagram.com/dylan_jonesvpsoc/">Instagram</a>
-        <a href="https://www.linkedin.com/in/dylanfjones/">LinkedIn</a>
-      </div>
-    </footer>
+    <div data-include="footer" data-base=""></div>
     <script src="assets/js/site.js" defer></script>
   </body>
 </html>
