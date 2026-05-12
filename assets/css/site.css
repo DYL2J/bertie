@@ -573,16 +573,16 @@ h3 {
     0 14px 28px rgb(21 19 18 / 0.08);
 }
 
-.js .story-card[data-reveal].is-visible.is-active {
-  transform: translateY(-2px);
-}
-
 .story-card a {
   display: grid;
   gap: 1rem;
   min-height: 100%;
   padding: clamp(0.85rem, 2vw, 1.1rem);
   text-decoration: none;
+}
+
+.js .story-card[data-reveal].is-visible.is-active {
+  transform: translateY(-2px);
 }
 
 .story-card img {
