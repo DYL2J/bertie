@@ -68,6 +68,68 @@
     updateProgress();
     window.addEventListener("scroll", updateProgress, { passive: true });
     window.addEventListener("resize", updateProgress);
+
+    const articleFooter = document.querySelector(".article-footer");
+
+    if (articleFooter) {
+      const counter = document.createElement("p");
+      const countValue = document.createElement("span");
+      const countLabel = document.createElement("span");
+      const articleSlug = window.location.pathname
+        .split("/")
+        .pop()
+        .replace(/\.html$/, "");
+      const counterNamespace = "bertie-writing";
+      const hasCountedKey = `bertie-view-counted:${articleSlug}`;
+      const endpointBase = `https://api.counterapi.dev/v1/${counterNamespace}/${articleSlug}`;
+      const countFormatter = new Intl.NumberFormat("en-GB");
+
+      counter.className = "view-counter";
+      countValue.className = "view-counter__value";
+      countValue.textContent = "Checking";
+      countLabel.className = "view-counter__label";
+      countLabel.textContent = "views";
+      counter.append(countValue, countLabel);
+      articleFooter.append(counter);
+
+      const getCountFromResponse = (payload) => {
+        if (typeof payload === "number") return payload;
+        if (!payload || typeof payload !== "object") return null;
+
+        return payload.count ?? payload.value ?? payload.data ?? payload.total ?? null;
+      };
+
+      const updateCounter = async () => {
+        try {
+          const shouldIncrement = sessionStorage.getItem(hasCountedKey) !== "true";
+          const endpoint = shouldIncrement ? `${endpointBase}/up` : endpointBase;
+          const response = await fetch(endpoint, { cache: "no-store" });
+
+          if (!response.ok) throw new Error("Counter request failed");
+
+          const payload = await response.json();
+          const count = getCountFromResponse(payload);
+
+          if (!Number.isFinite(Number(count))) throw new Error("Counter response missing count");
+
+          if (shouldIncrement) {
+            sessionStorage.setItem(hasCountedKey, "true");
+          }
+
+          countValue.textContent = countFormatter.format(Number(count));
+          countLabel.textContent = Number(count) === 1 ? "view" : "views";
+          counter.classList.add("is-loaded");
+        } catch (error) {
+          countValue.textContent = "Views";
+          countLabel.textContent = "unavailable";
+          counter.classList.add("has-error");
+        }
+      };
+
+      if (articleSlug) {
+        updateCounter();
+      }
+    }
   }
 
   const revealItems = document.querySelectorAll(
